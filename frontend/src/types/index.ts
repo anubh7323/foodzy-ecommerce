@@ -31,8 +31,9 @@ export interface OrderItem {
 }
 
 export interface CreateOrderDto {
-    email: string;
     items: OrderItem[];
+    shippingAddress: string;
+    paymentMethod: string;
 }
 
 export interface Order {
