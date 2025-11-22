@@ -20,6 +20,12 @@ export class Product {
     @Column({ default: true })
     isAvailable: boolean;
 
+    @Column('decimal', { precision: 2, scale: 1, default: 0 })
+    rating: number;
+
+    @Column('int', { default: 0 })
+    reviewCount: number;
+
     @CreateDateColumn()
     createdAt: Date;
 }
