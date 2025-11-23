@@ -15,6 +15,16 @@ export class ProductsController {
         return this.productsService.findOne(id);
     }
 
+    @Get('categories/all')
+    getCategories() {
+        return this.productsService.getCategories();
+    }
+
+    @Get('category/:category')
+    findByCategory(@Param('category') category: string) {
+        return this.productsService.findByCategory(category);
+    }
+
     @Post('seed')
     async seed() {
         await this.productsService.seed();

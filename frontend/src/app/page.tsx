@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import { fetchProducts } from '@/lib/api';
 import { Hero } from '@/components/Hero';
+import { CategorySection } from '@/components/CategorySection';
 import { PromoCards } from '@/components/PromoCards';
 import { ProductSection } from '@/components/ProductSection';
 import { DailyBestSells } from '@/components/DailyBestSells';
@@ -38,6 +39,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
       <Hero />
+
+      <CategorySection />
 
       <PromoCards />
 

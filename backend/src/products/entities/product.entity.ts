@@ -17,6 +17,9 @@ export class Product {
     @Column()
     imageUrl: string;
 
+    @Column({ default: 'Other' })
+    category: string;
+
     @Column({ default: true })
     isAvailable: boolean;
 

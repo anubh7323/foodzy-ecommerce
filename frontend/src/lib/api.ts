@@ -59,6 +59,16 @@ export const fetchProductById = async (id: string): Promise<Product> => {
     return data;
 };
 
+export const fetchCategories = async (): Promise<string[]> => {
+    const { data } = await api.get<string[]>('/products/categories/all');
+    return data;
+};
+
+export const fetchProductsByCategory = async (category: string): Promise<Product[]> => {
+    const { data } = await api.get<Product[]>(`/products/category/${category}`);
+    return data;
+};
+
 export const seedProducts = async (): Promise<void> => {
     await api.post('/products/seed');
 };
