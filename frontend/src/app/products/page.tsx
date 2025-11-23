@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Product } from '@/types';
 import { fetchProducts } from '@/lib/api';
 import { ProductCard } from '@/components/ProductCard';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 
-export default function ProductsPage() {
+function ProductsContent() {
     const searchParams = useSearchParams();
     const categoryParam = searchParams.get('category');
 
@@ -189,5 +189,22 @@ export default function ProductsPage() {
                 )}
             </div>
         </main>
+    );
+}
+
+export default function ProductsPage() {
+    return (
+        <Suspense fallback={
+            <main className="bg-gray-50 min-h-screen">
+                <div className="container-custom py-20 text-center">
+                    <div className="animate-pulse">
+                        <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-4"></div>
+                        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+                    </div>
+                </div>
+            </main>
+        }>
+            <ProductsContent />
+        </Suspense>
     );
 }
